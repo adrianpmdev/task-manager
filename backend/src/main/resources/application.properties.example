@@ -1,0 +1,13 @@
+# Copy this file to application.properties (ignored by git) and fill in your own values.
+
+# PostgreSQL connection (Supabase: Project Settings > Database > Connection string > JDBC)
+spring.datasource.url=jdbc:postgresql://<host>:5432/postgres
+spring.datasource.username=<user>
+spring.datasource.password=<password>
+
+# Internal user created on first start
+app.admin.username=<username>
+app.admin.password=<password>
+
+# Secret used to sign the access tokens (at least 32 characters)
+app.jwt.secret=<random-secret-of-at-least-32-characters>

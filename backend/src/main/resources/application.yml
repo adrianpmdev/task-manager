@@ -1,0 +1,21 @@
+# Settings without secrets, versioned with the code.
+# Secrets and values that change per machine live in application.properties (local only, ignored by git)
+# or in environment variables; both override anything written here.
+
+spring:
+  application:
+    name: task-manager
+  jpa:
+    # Internal tool with a small, stable model: Hibernate keeps the schema in sync with the entities.
+    hibernate:
+      ddl-auto: update
+    open-in-view: false
+  datasource:
+    hikari:
+      maximum-pool-size: 5
+      minimum-idle: 1
+
+app:
+  jwt:
+    expiration-minutes: 480
+    issuer: task-manager
