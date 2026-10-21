@@ -1,0 +1,97 @@
+@use 'variables' as *;
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    margin: 0;
+    background: $color-bg;
+    color: $color-text;
+    font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+    font-size: 15px;
+}
+
+h1,
+h2,
+h3 {
+    margin: 0 0 $space * 2;
+}
+
+a {
+    color: $color-primary;
+}
+
+input,
+select,
+textarea,
+button {
+    font: inherit;
+}
+
+input,
+select,
+textarea {
+    width: 100%;
+    padding: $space;
+    border: 1px solid $color-border;
+    border-radius: $radius;
+    background: $color-surface;
+    color: inherit;
+}
+
+label {
+    display: flex;
+    flex-direction: column;
+    gap: $space * 0.5;
+    color: $color-muted;
+    font-size: 13px;
+}
+
+.button {
+    padding: $space $space * 2;
+    border: 1px solid transparent;
+    border-radius: $radius;
+    background: $color-primary;
+    color: #fff;
+    cursor: pointer;
+
+    &:hover:not(:disabled) {
+        background: $color-primary-hover;
+    }
+
+    &:disabled {
+        opacity: 0.6;
+        cursor: default;
+    }
+
+    &.secondary {
+        border-color: $color-border;
+        background: $color-surface;
+        color: $color-text;
+    }
+
+    &.danger {
+        background: $color-danger;
+    }
+}
+
+.card {
+    padding: $space * 3;
+    border: 1px solid $color-border;
+    border-radius: $radius;
+    background: $color-surface;
+}
+
+.form-error {
+    margin: 0;
+    color: $color-danger;
+    font-size: 13px;
+}
+
+.empty {
+    color: $color-muted;
+}
