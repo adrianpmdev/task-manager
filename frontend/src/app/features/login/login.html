@@ -1,0 +1,21 @@
+<main class="login">
+    <form class="card" [formGroup]="form" (ngSubmit)="submit()">
+        <h1>Task Manager</h1>
+
+        <label>
+            Usuario
+            <input formControlName="username" autocomplete="username" />
+        </label>
+
+        <label>
+            Contraseña
+            <input formControlName="password" type="password" autocomplete="current-password" />
+        </label>
+
+        @if (error(); as message) {
+            <p class="form-error" role="alert">{{ message }}</p>
+        }
+
+        <button class="button" type="submit" [disabled]="submitting()">Entrar</button>
+    </form>
+</main>

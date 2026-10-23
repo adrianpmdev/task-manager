@@ -1,0 +1,16 @@
+@use 'variables' as *;
+
+.login {
+    display: grid;
+    min-height: 100vh;
+    place-items: center;
+    padding: $space * 2;
+}
+
+form {
+    display: flex;
+    width: 100%;
+    max-width: 360px;
+    flex-direction: column;
+    gap: $space * 2;
+}
