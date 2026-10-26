@@ -21,7 +21,14 @@ export const routes: Routes = [
         path: '',
         component: MainLayout,
         canActivate: [authGuard],
-        children: [],
+        children: [
+            { path: '', pathMatch: 'full', redirectTo: 'clients' },
+            {
+                path: 'clients',
+                loadComponent: () =>
+                    import('@features/clients/client-list/client-list').then((m) => m.ClientList),
+            },
+        ],
     },
     { path: '**', redirectTo: '' },
 ];

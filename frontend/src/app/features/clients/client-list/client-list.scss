@@ -1,0 +1,57 @@
+@use 'variables' as *;
+
+.client-form {
+    display: flex;
+    flex-direction: column;
+    gap: $space * 2;
+    margin-bottom: $space * 3;
+}
+
+.fields {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: $space * 2;
+}
+
+.actions,
+.row-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: $space;
+}
+
+.list {
+    padding: 0;
+}
+
+.list > .empty {
+    margin: 0;
+    padding: $space * 3;
+}
+
+.row {
+    display: grid;
+    grid-template-columns: 2fr 2fr 1fr auto;
+    align-items: center;
+    gap: $space * 2;
+    padding: $space * 1.5 $space * 3;
+
+    & + & {
+        border-top: 1px solid $color-border;
+    }
+}
+
+.name {
+    font-weight: 600;
+}
+
+.contact {
+    color: $color-muted;
+    overflow-wrap: anywhere;
+}
+
+@media (max-width: 700px) {
+    .row {
+        grid-template-columns: 1fr;
+    }
+}

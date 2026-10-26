@@ -1,0 +1,60 @@
+<h1>Clientes</h1>
+
+<form class="card client-form" [formGroup]="form" (ngSubmit)="save()">
+    <h2>{{ editingId() === null ? 'Nuevo cliente' : 'Editar cliente' }}</h2>
+
+    <div class="fields">
+        <label>
+            Nombre
+            <input formControlName="name" />
+        </label>
+
+        <label>
+            Email
+            <input formControlName="email" type="email" />
+        </label>
+
+        <label>
+            Teléfono
+            <input formControlName="phone" type="tel" />
+        </label>
+    </div>
+
+    @if (form.controls.name.touched && form.controls.name.invalid) {
+        <p class="form-error">El nombre es obligatorio (máx. 120 caracteres)</p>
+    }
+    @if (form.controls.email.touched && form.controls.email.invalid) {
+        <p class="form-error">El email no es válido</p>
+    }
+
+    <div class="actions">
+        @if (editingId() !== null) {
+            <button class="button secondary" type="button" (click)="cancelEdit()">Cancelar</button>
+        }
+        <button class="button" type="submit" [disabled]="saving()">Guardar</button>
+    </div>
+</form>
+
+@if (error(); as message) {
+    <p class="form-error" role="alert">{{ message }}</p>
+}
+
+@if (loading()) {
+    <p class="empty">Cargando…</p>
+} @else {
+    <div class="card list">
+        @for (client of clients(); track client.id) {
+            <div class="row">
+                <a class="name" [routerLink]="['/clients', client.id]">{{ client.name }}</a>
+                <span class="contact">{{ client.email ?? '' }}</span>
+                <span class="contact">{{ client.phone ?? '' }}</span>
+                <div class="row-actions">
+                    <button class="button secondary" type="button" (click)="edit(client)">Editar</button>
+                    <button class="button danger" type="button" (click)="remove(client)">Eliminar</button>
+                </div>
+            </div>
+        } @empty {
+            <p class="empty">Todavía no hay clientes</p>
+        }
+    </div>
+}
