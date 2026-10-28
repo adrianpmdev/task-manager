@@ -28,6 +28,11 @@ export const routes: Routes = [
                 loadComponent: () =>
                     import('@features/clients/client-list/client-list').then((m) => m.ClientList),
             },
+            {
+                path: 'clients/:id',
+                loadComponent: () =>
+                    import('@features/tasks/client-tasks/client-tasks').then((m) => m.ClientTasks),
+            },
         ],
     },
     { path: '**', redirectTo: '' },

@@ -1,0 +1,48 @@
+<a routerLink="/clients">← Clientes</a>
+
+<h1>{{ client()?.name ?? 'Cliente' }}</h1>
+
+<form class="card task-form" [formGroup]="form" (ngSubmit)="create()">
+    <label>
+        Nueva tarea
+        <input formControlName="title" />
+    </label>
+
+    <label>
+        Fecha límite
+        <input formControlName="dueDate" type="date" />
+    </label>
+
+    <button class="button" type="submit">Añadir</button>
+</form>
+
+<label class="filter">
+    Estado
+    <select (change)="setFilter($any($event.target).value)">
+        <option value="">Todas</option>
+        @for (status of statuses; track status) {
+            <option [value]="status">{{ statusLabels[status] }}</option>
+        }
+    </select>
+</label>
+
+@if (error(); as message) {
+    <p class="form-error" role="alert">{{ message }}</p>
+}
+
+<div class="card list">
+    @for (task of tasks(); track task.id) {
+        <div class="row">
+            <span class="title">{{ task.title }}</span>
+            <span class="due">{{ task.dueDate }}</span>
+            <select (change)="changeStatus(task, $any($event.target).value)">
+                @for (status of statuses; track status) {
+                    <option [value]="status" [selected]="status === task.status">{{ statusLabels[status] }}</option>
+                }
+            </select>
+            <button class="button danger" type="button" (click)="remove(task)">Eliminar</button>
+        </div>
+    } @empty {
+        <p class="empty">No hay tareas</p>
+    }
+</div>
