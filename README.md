@@ -2,7 +2,7 @@
 
 # Task Manager
 
-### Internal web application to organize clients and track their tasks
+### Aplicación web interna para organizar clientes y hacer el seguimiento de sus tareas
 
 ![Java](https://img.shields.io/badge/Java-25-ED8B00?style=for-the-badge&logo=openjdk&logoColor=white)
 ![Spring Boot](https://img.shields.io/badge/Spring_Boot-4.0-6DB33F?style=for-the-badge&logo=springboot&logoColor=white)
@@ -17,60 +17,60 @@
 
 ---
 
-## Description
+## Descripción
 
-Internal web application to keep the clients of a company and the tasks pending for each of them. Every task has a status and a due date, so the team can see at a glance what is left to do for each client.
+Aplicación web interna para gestionar los clientes de una empresa y las tareas pendientes de cada uno. Cada tarea tiene un estado y una fecha límite, así el equipo ve de un vistazo qué queda por hacer para cada cliente.
 
-## Features
+## Funcionalidades
 
-- Sign in with an internal user (JWT).
-- Create, edit and delete clients.
-- Tasks per client with status (pending, in progress, done) and due date.
-- Filter the tasks of a client by status.
-- REST API documented with Swagger.
+- Inicio de sesión con un usuario interno (JWT).
+- Alta, edición y borrado de clientes.
+- Tareas por cliente con estado (pendiente, en curso, hecha) y fecha límite.
+- Filtro de las tareas de un cliente por estado.
+- API REST documentada con Swagger.
 
-## Tech stack
+## Tecnologías
 
-| Technology | Purpose |
+| Tecnología | Uso |
 | --- | --- |
-| Java 25 + Spring Boot 4 | REST API |
-| Spring Security + JWT | Authentication |
-| Spring Data JPA | Persistence |
-| Supabase (PostgreSQL) | Database |
-| springdoc-openapi | Swagger documentation |
+| Java 25 + Spring Boot 4 | API REST |
+| Spring Security + JWT | Autenticación |
+| Spring Data JPA | Persistencia |
+| Supabase (PostgreSQL) | Base de datos |
+| springdoc-openapi | Documentación Swagger |
 | Angular 21 + TypeScript | Frontend |
-| SCSS | Styles |
+| SCSS | Estilos |
 
-## Project structure
+## Estructura del proyecto
 
 ```
 task-manager/
-├── backend/                  # Spring Boot REST API
+├── backend/                  # API REST con Spring Boot
 │   └── src/main/java/.../taskmanager/
-│       ├── config/           # Settings and OpenAPI
-│       ├── security/         # Security chain and JWT
+│       ├── config/           # Configuración y OpenAPI
+│       ├── security/         # Cadena de seguridad y JWT
 │       ├── features/         # auth, users, clients, tasks
-│       └── web/exception/    # Error responses
-└── frontend/                 # Angular application
+│       └── web/exception/    # Respuestas de error
+└── frontend/                 # Aplicación Angular
     └── src/app/
-        ├── core/             # API calls, session, guards
-        ├── shared/models/    # Client and task models
-        ├── layout/           # Main layout
+        ├── core/             # Llamadas a la API, sesión y guards
+        ├── shared/models/    # Modelos de cliente y tarea
+        ├── layout/           # Layout principal
         └── features/         # login, clients, tasks
 ```
 
-## Getting started
+## Puesta en marcha
 
 ### Backend
 
-Copy `backend/src/main/resources/application.properties.example` to `application.properties` in the same folder and fill in the Supabase connection, the internal user and a JWT secret of at least 32 characters. Then:
+Copia `backend/src/main/resources/application.properties.example` como `application.properties` en la misma carpeta y rellena la conexión de Supabase, el usuario interno y un secreto JWT de al menos 32 caracteres. Después:
 
 ```bash
 cd backend
 mvn spring-boot:run
 ```
 
-The API runs on http://localhost:8080 and Swagger on http://localhost:8080/swagger-ui.html. The internal user is created on first start.
+La API arranca en http://localhost:8080 y Swagger en http://localhost:8080/swagger-ui.html. El usuario interno se crea en el primer arranque.
 
 ### Frontend
 
@@ -80,7 +80,7 @@ npm install
 npm start
 ```
 
-Open http://localhost:4200. Requests to `/api` are forwarded to the backend.
+Abre http://localhost:4200. Las peticiones a `/api` se redirigen al backend.
 
 ### Tests
 
@@ -91,18 +91,18 @@ mvn test
 
 ## Endpoints
 
-| Method | Path | Description |
+| Método | Ruta | Descripción |
 | --- | --- | --- |
-| POST | `/api/v1/auth/login` | Sign in |
-| GET | `/api/v1/clients` | List clients |
-| POST | `/api/v1/clients` | Create a client |
-| GET | `/api/v1/clients/{id}` | Get a client |
-| PUT | `/api/v1/clients/{id}` | Update a client |
-| DELETE | `/api/v1/clients/{id}` | Delete a client and its tasks |
-| GET | `/api/v1/clients/{id}/tasks?status=` | List the tasks of a client |
-| POST | `/api/v1/clients/{id}/tasks` | Create a task |
-| PUT | `/api/v1/tasks/{id}` | Update a task |
-| DELETE | `/api/v1/tasks/{id}` | Delete a task |
+| POST | `/api/v1/auth/login` | Iniciar sesión |
+| GET | `/api/v1/clients` | Listar clientes |
+| POST | `/api/v1/clients` | Crear un cliente |
+| GET | `/api/v1/clients/{id}` | Obtener un cliente |
+| PUT | `/api/v1/clients/{id}` | Actualizar un cliente |
+| DELETE | `/api/v1/clients/{id}` | Borrar un cliente y sus tareas |
+| GET | `/api/v1/clients/{id}/tasks?status=` | Listar las tareas de un cliente |
+| POST | `/api/v1/clients/{id}/tasks` | Crear una tarea |
+| PUT | `/api/v1/tasks/{id}` | Actualizar una tarea |
+| DELETE | `/api/v1/tasks/{id}` | Borrar una tarea |
 
 ---
 
